@@ -16,7 +16,8 @@
 # limitations under the License.
 #
 
-require 'chef/provider/package'
+# this require line breaks things in ruby 1.9
+# require 'chef/provider/package'
 require 'chef/mixin/command'
 require 'chef/resource/package'
 

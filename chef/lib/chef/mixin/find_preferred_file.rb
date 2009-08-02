@@ -16,7 +16,8 @@
 # limitations under the License.
 #
 
-require 'chef/cookbook_loader'
+# this require line breaks things in ruby 1.9
+# require 'chef/cookbook_loader'
 
 class Chef
   module Mixin
