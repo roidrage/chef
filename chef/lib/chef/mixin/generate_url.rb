@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-require 'chef/platform'
+# require 'chef/platform'
 
 class Chef
   module Mixin
