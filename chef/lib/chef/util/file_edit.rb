@@ -73,7 +73,7 @@ class Chef
 				# file_edited is false when there was no match in the whole file and thus no contents have changed.
 				if file_edited
 					backup_pathname = original_pathname + ".old"
-					File.copy(original_pathname, backup_pathname)
+					FileUtils.cp(original_pathname, backup_pathname)
 					Tempfile.open("w") do |newfile|
 						contents.each do |line|
 							newfile.puts(line)
