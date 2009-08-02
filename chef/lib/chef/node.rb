@@ -310,7 +310,7 @@ class Chef
         if v.kind_of?(Hash) || v.kind_of?(Mash)
           results << index_flatten_hash("#{parent_name}_#{k}", v)
         else
-          results << { "#{parent_name}_#{k}", v }
+          results << { "#{parent_name}_#{k}" => v }
         end
       end
       results.flatten
