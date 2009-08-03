@@ -41,7 +41,7 @@ class Chef
         if status.exitstatus > 1
           raise Chef::Exceptions::Cron, "Error determining state of #{@new_resource.name}, exit: #{status.exitstatus}"
         elsif status.exitstatus == 0
-          crontab.each do |line|
+          crontab.each_line do |line|
             case line
             when /^# Chef Name: #{@new_resource.name}/
               Chef::Log.debug("Found cron '#{@new_resource.name}'")
@@ -83,7 +83,7 @@ class Chef
 
 
           status = popen4("crontab -u #{@new_resource.user} -", :waitlast => true) do |pid, stdin, stdout, stderr|
-            crontab.each { |line| stdin.puts "#{line}" }
+            crontab.each_line { |line| stdin.puts "#{line}" }
             stdin.close
           end
           Chef::Log.info("Updated cron '#{@new_resource.name}'")
@@ -98,7 +98,7 @@ class Chef
           crontab << "#{@new_resource.minute} #{@new_resource.hour} #{@new_resource.day} #{@new_resource.month} #{@new_resource.weekday} #{@new_resource.command}\n"
   
           status = popen4("crontab -u #{@new_resource.user} -", :waitlast => true) do |pid, stdin, stdout, stderr|
-            crontab.each { |line| stdin.puts "#{line}" }
+            crontab.each_line { |line| stdin.puts "#{line}" }
             stdin.close
           end
           Chef::Log.info("Added cron '#{@new_resource.name}'")
@@ -125,7 +125,7 @@ class Chef
           end
 
           status = popen4("crontab -u #{@new_resource.user} -", :waitlast => true) do |pid, stdin, stdout, stderr|
-            crontab.each { |line| stdin.puts "#{line}" }
+            crontab.each_line { |line| stdin.puts "#{line}" }
             stdin.close
           end
           Chef::Log.debug("Deleted cron '#{@new_resource.name}'")

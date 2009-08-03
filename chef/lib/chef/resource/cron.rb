@@ -44,7 +44,7 @@ class Chef
         end
         begin
           if Integer(arg) > 59 then raise RangeError end
-        rescue ArgumentError
+        rescue ArgumentError, TypeError
         end
         set_or_return(
           :minute,
@@ -61,7 +61,7 @@ class Chef
         end
         begin
           if Integer(arg) > 23 then raise RangeError end
-        rescue ArgumentError
+        rescue ArgumentError, TypeError
         end
         set_or_return(
           :hour,
@@ -78,7 +78,7 @@ class Chef
         end
         begin
           if Integer(arg) > 31 then raise RangeError end
-        rescue ArgumentError
+        rescue ArgumentError, TypeError
         end
         set_or_return(
           :day,
@@ -95,7 +95,7 @@ class Chef
         end
         begin
           if Integer(arg) > 12 then raise RangeError end
-        rescue ArgumentError
+        rescue ArgumentError, TypeError
         end
         set_or_return(
           :month,
@@ -112,7 +112,7 @@ class Chef
         end
         begin
           if Integer(arg) > 7 then raise RangeError end
-        rescue ArgumentError
+        rescue ArgumentError, TypeError
         end
         set_or_return(
           :weekday,

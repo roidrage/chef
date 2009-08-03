@@ -21,5 +21,5 @@
                   = link_to('Edit', slice_url(:edit_node, escape_node_id(node))) 
                   |
                   = link_to('Delete', slice_url(:node, escape_node_id(node)), :method => "delete", :confirm => "Really delete Node #{node}?  There is no undo.")
-                - even ? even = false: even = true
+                - even ? even = false : even = true
 
